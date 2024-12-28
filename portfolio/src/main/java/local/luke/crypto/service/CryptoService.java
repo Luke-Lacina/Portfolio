@@ -3,6 +3,7 @@ package local.luke.crypto.service;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import local.luke.crypto.exception.CryptoException;
@@ -68,13 +69,14 @@ public class CryptoService {
         return updatedCrypto;
     }
 
-    public String getTotalValue() {
+    public Map<String, Double> getTotalValue() {
         double totalValue = 0;
 
         for (Crypto crypto : cryptos) {
             totalValue += (crypto.getPrice() * crypto.getQuantity());
         }
-        return String.format("%.2f", totalValue);
+
+        return Map.of("total-value", totalValue);
     }
 
 }

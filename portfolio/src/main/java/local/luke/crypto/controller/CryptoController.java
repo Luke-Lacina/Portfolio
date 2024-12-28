@@ -5,6 +5,7 @@ import local.luke.crypto.exception.CryptoException;
 import local.luke.crypto.model.Crypto;
 import local.luke.crypto.service.CryptoService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,9 +68,9 @@ public class CryptoController {
     }
 
     @GetMapping("/portfolio-value")
-    public ResponseEntity<String> getTotalValue() {
-        String totalValue = cryptoService.getTotalValue();
-        return ResponseEntity.status(HttpStatus.OK).body("Aktuální hodnota portfolia je " + totalValue + " USD.");
+    public ResponseEntity<?> getTotalValue() {
+        Map<String, Double> totalValue = cryptoService.getTotalValue();
+        return ResponseEntity.status(HttpStatus.OK).body(totalValue);
     }
 
 }
