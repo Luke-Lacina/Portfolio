@@ -1,0 +1,25 @@
+Přidání nové kryptoměny do portfolia
+curl -X POST -H "Content-Type: application/json" -d "{\"name\": \"Bitcoin\", \"symbol\": \"BTC\", \"price\": 92888.11, \"quantity\": 0.5}" http://localhost:8080/cryptos
+
+curl -X POST -H "Content-Type: application/json" -d "{\"name\": \"Bitcoin\", \"symbol\": \"BTC\", \"price\": 92888.11, \"quantity\": 1}" http://localhost:8080/cryptos
+
+curl -X POST -H "Content-Type: application/json" -d "{\"name\": \"Ethereum\", \"symbol\": \"ETH\", \"price\": 3447.35, \"quantity\": 0.5}" http://localhost:8080/cryptos
+
+curl -X POST -H "Content-Type: application/json" -d "{\"name\": \"Ethereum\", \"symbol\": \"ETH\", \"price\": 3447.35, \"quantity\": 1}" http://localhost:8080/cryptos
+
+Výpis všech kryptoměn v portfoliu
+curl http://localhost:8080/cryptos
+
+Seřazení kryptoměn podle názvu, ceny nebo počtu jednotek
+curl http://localhost:8080/cryptos?sort=name
+curl http://localhost:8080/cryptos?sort=price
+curl http://localhost:8080/cryptos?sort=quantity
+
+Získání detailu konkrétní kryptoměny
+curl http://localhost:8080/cryptos/1
+
+Aktualizace kryptoměny
+curl -X PUT -H "Content-Type: application/json" -d "{\"price\": 92999.22, \"quantity\": 0.75}" http://localhost:8080/cryptos/2
+
+Celková hodnota portfolia
+curl http://localhost:8080/portfolio-value
